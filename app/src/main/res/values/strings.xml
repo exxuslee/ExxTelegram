@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ExxTelegram</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Login Fragment</string>
+    <string name="second_fragment_label">Main Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos.
+    </string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="send_telephone">Send telefone</string>
+    <string name="send_code">Send code</string>
+    <string name="send_update">update</string>
+    <string name="send_password">Send password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="code">Code</string>
+    <string name="chats">Chats</string>
+    <string name="message">Message</string>
+    <string name="chatid">chatId</string>
+    <string name="send">Send</string>
+    <string name="test_message">test message</string>
+</resources>
