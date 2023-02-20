@@ -42,6 +42,12 @@ class MainFragment : Fragment() {
                 binding.editMessage.text.toString()
             )
         }
+        binding.buttonSendNameChat.setOnClickListener {
+            viewModel.sendName(
+                binding.editNameChat.text.toString(),
+            )
+        }
+
 
         val settingAdapter = ChatsAdapter()
         binding.recyclerChats.adapter = settingAdapter

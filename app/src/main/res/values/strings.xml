@@ -26,4 +26,6 @@
     <string name="chatid">chatId</string>
     <string name="send">Send</string>
     <string name="test_message">test message</string>
+    <string name="name_chat">name_chat</string>
+    <string name="check">Check</string>
 </resources>

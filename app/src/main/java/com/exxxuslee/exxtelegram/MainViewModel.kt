@@ -15,7 +15,7 @@ import org.drinkless.td.libcore.telegram.Client
 import org.drinkless.td.libcore.telegram.TdApi.*
 
 
-class MainViewModel : ViewModel(), Communication.Observe<List<Chat>>{
+class MainViewModel : ViewModel(), Communication.Observe<List<Chat>> {
     private val communication: MainCommunication.Mutable = MainCommunication.Base()
     private val status: StatusCommunication.Mutable = StatusCommunication.Base()
 
@@ -55,6 +55,10 @@ class MainViewModel : ViewModel(), Communication.Observe<List<Chat>>{
             SendMessage(chaiId, 0, 0, null, null, inputMessageText),
             ChatRequestHandler()
         )
+    }
+
+    fun sendName(message: String = "test") {
+        client.send(CheckChatUsername(0,message), CheckChatUsernameRequestHandler())
     }
 
 
@@ -141,6 +145,37 @@ class MainViewModel : ViewModel(), Communication.Observe<List<Chat>>{
 
     }
 
+    inner class CheckChatUsernameRequestHandler : Client.ResultHandler {
+        override fun onResult(result: Object) {
+            Log.d("CheckChat", "CheckChatUsernameRequestHandler - ${result.constructor}")
+            when (result.constructor) {
+                Error.CONSTRUCTOR -> Log.d(TAG, "Handler Chat error - ${result.constructor}")
+                CheckChatUsernameResultOk.CONSTRUCTOR -> {
+                    Log.d("CheckChat", "CheckChatUsernameResultOk")
+                    status.post("CheckChatUsernameResultOk")
+                }
+                CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR -> {
+                    Log.d("CheckChat", "CheckChatUsernameResultPublicChatsTooMuch")
+                    status.post("CheckChatUsernameResultPublicChatsTooMuch")
+                }
+                CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR -> {
+                    Log.d("CheckChat", "CheckChatUsernameResultUsernameInvalid")
+                    status.post("CheckChatUsernameResultUsernameInvalid")
+                }
+                CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR -> {
+                    Log.d("CheckChat", "CheckChatUsernameResultUsernameOccupied")
+                    status.post("CheckChatUsernameResultUsernameOccupied")
+                }
+                CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR -> {
+                    Log.d("CheckChat", "CheckChatUsernameResultPublicGroupsUnavailable")
+                    status.post("CheckChatUsernameResultPublicGroupsUnavailable")
+                }
+                else -> {
+                    Log.d("CheckChat", "Handler Received wrong response from TDLib: ${result.constructor}")
+                }
+            }
+        }
+    }
     inner class ChatRequestHandler : Client.ResultHandler {
         override fun onResult(result: Object) {
             when (result.constructor) {

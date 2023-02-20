@@ -52,7 +52,6 @@
                 android:layout_marginTop="16dp"
                 android:hint="@string/message"
                 android:imeOptions="actionDone"
-                android:inputType="number"
                 android:minWidth="100dp"
                 android:text="@string/test_message"
                 android:padding="12dp" />
@@ -62,6 +61,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/send" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_NameChat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:hint="@string/name_chat"
+                android:imeOptions="actionDone"
+                android:minWidth="100dp"
+                android:text="@string/name_chat"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/button_sendNameChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check" />
         </LinearLayout>
 
 
